@@ -22,10 +22,10 @@ Mix.install([
 </div>
 <div style="display: flex;">
 <i class="ri-arrow-left-fill"></i>
-<a style="display: flex; color: #61758a; margin-left: 1rem;" href="../exercises/timer.livemd">Timer</a>
+<a style="display: flex; color: #61758a; margin-left: 1rem;" href="../exercises/traffic_light_server.livemd">Traffic Light Server</a>
 </div>
 <div style="display: flex;">
-<a style="display: flex; color: #61758a; margin-right: 1rem;" href="../exercises/supervised_stack.livemd">Supervised Stack</a>
+<a style="display: flex; color: #61758a; margin-right: 1rem;" href="../exercises/supervisor_drills.livemd">Supervisor Drills</a>
 <i class="ri-arrow-right-fill"></i>
 </div>
 </div>
@@ -72,7 +72,7 @@ Process.sleep(100)
 When a linked process crashes, it will also crashed the process that spawned it. Uncomment the code below, and you'll see it crashes the current Livebook process. Re-comment the code when finished.
 
 ```elixir
-# Spawn_link(fn -> Raise "error" End)
+# spawn_link(fn -> Raise "error" End)
 ```
 
 That means if we start a [GenServer](https://hexdocs.pm/elixir/GenServer.html) (or other process) **unsupervised** it will raise an error if it crashes.
@@ -94,15 +94,23 @@ end
 Uncomment and run the following code to see it crashes the current Livebook process, then re-comment the code.
 
 ```elixir
-# {:ok, Pid} = GenServer.start_link(UnsupervisedWorker, [])
+# {:ok, pid} = GenServer.start_link(UnsupervisedWorker, [])
 # Process.send(pid, :crash, [])
 ```
 
 The same is true if we manually exit a process using [Process.exit/2](https://hexdocs.pm/elixir/Process.html#exit/2) with the `:exit` reason. Uncomment and run the following code to see it crashes the current Livebook process, then re-comment the code.
 
 ```elixir
-# {:ok, Pid} = GenServer.start_link(UnsupervisedWorker, [])
+# {:ok, pid} = GenServer.start_link(UnsupervisedWorker, [])
 # Process.exit(pid, :exit)
+```
+
+If you would like to learn more about fault taulerance and error handling, Joe Armstrong created an incredible video on the subject.
+
+<!-- livebook:{"attrs":{"source":"YouTube.new(\"https://www.youtube.com/watch?v=ZOsvgwOR6G0&ab_channel=KentComputing\")","title":"Erlang Master Class 2: Video 3 - Handling errors"},"chunks":null,"kind":"Elixir.HiddenCell","livebook_object":"smart_cell"} -->
+
+```elixir
+YouTube.new("https://www.youtube.com/watch?v=ZOsvgwOR6G0&ab_channel=KentComputing")
 ```
 
 ## Supervisors
@@ -187,7 +195,7 @@ When we kill one of the processes under the supervision tree, it will be restart
 pid = :c.pid(0, 727, 0)
 ```
 
-Then, kill the process using [Process.exit/2](https://hexdocs.pm/elixir/1.12/Process.html#exit/2).
+Then, kill the process using [Process.exit/2](https://hexdocs.pm/elixir/Process.html#exit/2).
 
 <!-- livebook:{"force_markdown":true} -->
 
@@ -214,7 +222,7 @@ However, sometimes we want different restart strategies such as `:one_for_all` a
 Restart only the worker that crashed.
 
 ```mermaid
-flowchart TD 
+flowchart TD
     Supervisor
     Supervisor --> P1
     Supervisor --> P2
@@ -237,7 +245,7 @@ In the diagram above, only P2 crashed, so only P2 will be restarted by the super
 Restart all of the child workers.
 
 ```mermaid
-flowchart TD 
+flowchart TD
     Supervisor
     Supervisor --> P1
     Supervisor --> P2
@@ -261,7 +269,7 @@ P2 crashed, which led to all the other child processes to be terminated, then al
 Restart child workers in order after the crashed process.
 
 ```mermaid
-flowchart TD 
+flowchart TD
     Supervisor
     Supervisor --> P1
     Supervisor --> P2
@@ -355,7 +363,7 @@ so the timeline of crashes should be:
 Uncomment and run the cell below to see the timeline of crashes, then re-comment it.
 
 ```elixir
-# {:ok, Supervisor_pid} = Supervisor.start_link(children, Strategy: :one_for_one, Max_restarts: 5)
+# {:ok, supervisor_pid} = Supervisor.start_link(children, strategy: :one_for_one, max_restarts: 5)
 ```
 
 ### One For All
@@ -376,7 +384,7 @@ Notice that `Bomb2` and `Bomb3` will never explode because their timers restart.
 Uncomment the line below to observe the timeline of crashes, then re-comment it.
 
 ```elixir
-# {:ok, Supervisor_pid} = Supervisor.start_link(children, Strategy: :one_for_all, Max_restarts: 5)
+# {:ok, supervisor_pid} = Supervisor.start_link(children, strategy: :one_for_all, max_restarts: 5)
 ```
 
 ### Rest For One
@@ -398,7 +406,7 @@ timeline will still be:
 Uncomment the line below to observe the timeline of crashes, then re-comment it.
 
 ```elixir
-# {:ok, Supervisor_pid} = Supervisor.start_link(children, Strategy: :rest_for_one, Max_restarts: 5)
+# {:ok, supervisor_pid} = Supervisor.start_link(children, strategy: :rest_for_one, max_restarts: 5)
 ```
 
 However, if we change the order of children in the supervisor, only children after the crashed
@@ -454,7 +462,7 @@ children = [
 Uncomment the following code to see the crash timeline, then re-comment it.
 
 ```elixir
-# Supervisor.start_link(children, Strategy: :one_for_one)
+# Supervisor.start_link(children, strategy: :one_for_one)
 ```
 
 ## Further Reading
@@ -462,6 +470,56 @@ Uncomment the following code to see the crash timeline, then re-comment it.
 * [HexDocs: Supervisor](https://hexdocs.pm/elixir/Supervisor.html#init/2-options)
 * [Elixir Schools: Supervisor Strategies](https://elixirschool.com/blog/supervisor-strategies)
 * [Elixir Schools: OTP Supervisors](https://elixirschool.com/en/lessons/advanced/otp_supervisors)
+
+## Supervised Mix Projects
+
+Supervised mix projects use an [Application](https://hexdocs.pm/elixir/Application.html) module that defines application callbacks.
+
+The application module is configured in `mix.exs` in the `application/0` function.
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+def application do
+  [
+    extra_applications: [:logger],
+    mod: {MyApp.Application, []}
+  ]
+end
+```
+
+The application module typically lives in the project folder in a `my_app/application.ex` file and contains the logic to start the application. In a supervised application, this module starts a supervision tree.
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+defmodule MyApp.Application do
+  # See https://hexdocs.pm/elixir/Application.html
+  # for more information on OTP Applications
+  @moduledoc false
+
+  use Application
+
+  @impl true
+  def start(_type, _args) do
+    children = [
+      # Starts a worker by calling: RockPaperScissors.Worker.start_link(arg)
+      # {RockPaperScissors.Worker, arg}
+    ]
+
+    # See https://hexdocs.pm/elixir/Supervisor.html
+    # for other strategies and supported options
+    opts = [strategy: :one_for_one, name: MyApp.Supervisor]
+    Supervisor.start_link(children, opts)
+  end
+end
+```
+
+We can generate a mix project with all of the above scaffolding using the `--sup` flag, or add it manually to an existing project.
+
+```
+mix new my_app --sup
+```
 
 ## Commit Your Progress
 
@@ -494,10 +552,10 @@ We will accept applications for the June-August 2023 cohort soon.
 </div>
 <div style="display: flex;">
 <i class="ri-arrow-left-fill"></i>
-<a style="display: flex; color: #61758a; margin-left: 1rem;" href="../exercises/timer.livemd">Timer</a>
+<a style="display: flex; color: #61758a; margin-left: 1rem;" href="../exercises/traffic_light_server.livemd">Traffic Light Server</a>
 </div>
 <div style="display: flex;">
-<a style="display: flex; color: #61758a; margin-right: 1rem;" href="../exercises/supervised_stack.livemd">Supervised Stack</a>
+<a style="display: flex; color: #61758a; margin-right: 1rem;" href="../exercises/supervisor_drills.livemd">Supervisor Drills</a>
 <i class="ri-arrow-right-fill"></i>
 </div>
 </div>

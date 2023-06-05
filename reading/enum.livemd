@@ -363,7 +363,7 @@ Enum.map([one: 1, two: 2], fn {key, _value} -> key end)
 
 ### Your Turn
 
-Use [Enum.map/2](https://hexdocs.pm/elixir/1.12/Enum.html#map/2) to convert a list of integers from `1` to `10` to strings.
+Use [Enum.map/2](https://hexdocs.pm/elixir/Enum.html#map/2) to convert a list of integers from `1` to `10` to strings.
 
 <!-- livebook:{"force_markdown":true} -->
 
@@ -391,7 +391,7 @@ Enter your solution below.
 
 [Enum.reduce/2](https://hexdocs.pm/elixir/Enum.html#reduce/2) allows you to enumerate over a collection and build up an accumulated value with each enumeration.
 
-Unlike [Enum.map/2](https://hexdocs.pm/elixir/1.12/Enum.html#map/2) this gives you significantly more control over your output, as the data type of the accumulator and return value do not have to be a list.
+Unlike [Enum.map/2](https://hexdocs.pm/elixir/Enum.html#map/2) this gives you significantly more control over your output, as the data type of the accumulator and return value do not have to be a list.
 
 ```mermaid
 flowchart LR
@@ -599,7 +599,7 @@ colors = [:green, :green, :red]
 
 ## Enum.any?/2
 
-[Enum.any?/2](https://hexdocs.pm/elixir/Enum.html#any/2) checks if any elements in a collection pass some condition. If a single element returns a truthy value when called with the callback function, then [Enum.any?/2](https://hexdocs.pm/elixir/Enum.html#any/2) returns `true`.
+[Enum.any?/2](https://hexdocs.pm/elixir/Enum.html#any?/2) checks if any elements in a collection pass some condition. If a single element returns a truthy value when called with the callback function, then [Enum.any?/2](https://hexdocs.pm/elixir/Enum.html#any?/2) returns `true`.
 
 <!-- livebook:{"break_markdown":true} -->
 
@@ -615,7 +615,7 @@ E --> Boolean
 Enum.any?([1, "2", "3"], fn element -> is_integer(element) end)
 ```
 
-[Enum.any?/2](https://hexdocs.pm/elixir/Enum.html#any/2) returns as soon as an element in the collection returns a truthy value.
+[Enum.any?/2](https://hexdocs.pm/elixir/Enum.html#any?/2) returns as soon as an element in the collection returns a truthy value.
 
 Notice the code below finishes very quickly, because the first element in the collection passes the condition.
 
@@ -631,7 +631,7 @@ Enum.any?(1..10_000_000, fn integer -> is_bitstring(integer) end)
 
 ### Your Turn
 
-Use [Enum.any?/2](https://hexdocs.pm/elixir/Enum.html#any/2) to determine if any of the animals in the `animals` list are `:dogs`. You may change the `animals` list to experiment with [Enum.any?/2](https://hexdocs.pm/elixir/Enum.html#any/2).
+Use [Enum.any?/2](https://hexdocs.pm/elixir/Enum.html#any?/2) to determine if any of the animals in the `animals` list are `:dogs`. You may change the `animals` list to experiment with [Enum.any?/2](https://hexdocs.pm/elixir/Enum.html#any?/2).
 
 ```elixir
 animals = [:cats, :dogs, :bears, :lions, :penguins]

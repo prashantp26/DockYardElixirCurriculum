@@ -22,7 +22,7 @@ Mix.install([
 </div>
 <div style="display: flex;">
 <i class="ri-arrow-left-fill"></i>
-<a style="display: flex; color: #61758a; margin-left: 1rem;" href="../exercises/rps_guards.livemd">Rock Paper Scissors Guards</a>
+<a style="display: flex; color: #61758a; margin-left: 1rem;" href="../exercises/math_with_guards.livemd">Math With Guards</a>
 </div>
 <div style="display: flex;">
 <a style="display: flex; color: #61758a; margin-right: 1rem;" href="../exercises/math_with_protocols.livemd">Math With Protocols</a>
@@ -288,6 +288,14 @@ end
 
 ```
 
+For more information, there is a talk by Kevin Rockwood.
+
+<!-- livebook:{"attrs":{"source":"YouTube.new(\"https://www.youtube.com/watch?v=sJvfCE6PFxY\")","title":"Kevin Rockwood | A Practical Guide to Elixir Protocols"},"chunks":null,"kind":"Elixir.HiddenCell","livebook_object":"smart_cell"} -->
+
+```elixir
+YouTube.new("https://www.youtube.com/watch?v=sJvfCE6PFxY")
+```
+
 ## Commit Your Progress
 
 DockYard Academy now recommends you use the latest [Release](https://github.com/DockYard-Academy/curriculum/releases) rather than forking or cloning our repository.
@@ -319,7 +327,7 @@ We will accept applications for the June-August 2023 cohort soon.
 </div>
 <div style="display: flex;">
 <i class="ri-arrow-left-fill"></i>
-<a style="display: flex; color: #61758a; margin-left: 1rem;" href="../exercises/rps_guards.livemd">Rock Paper Scissors Guards</a>
+<a style="display: flex; color: #61758a; margin-left: 1rem;" href="../exercises/math_with_guards.livemd">Math With Guards</a>
 </div>
 <div style="display: flex;">
 <a style="display: flex; color: #61758a; margin-right: 1rem;" href="../exercises/math_with_protocols.livemd">Math With Protocols</a>

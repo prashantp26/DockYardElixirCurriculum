@@ -22,7 +22,7 @@ Mix.install([
 </div>
 <div style="display: flex;">
 <i class="ri-arrow-left-fill"></i>
-<a style="display: flex; color: #61758a; margin-left: 1rem;" href="../reading/file.livemd">File</a>
+<a style="display: flex; color: #61758a; margin-left: 1rem;" href="../exercises/stream_drills.livemd">Stream Drills</a>
 </div>
 <div style="display: flex;">
 <a style="display: flex; color: #61758a; margin-right: 1rem;" href="../exercises/save_game.livemd">Save Game</a>
@@ -134,7 +134,7 @@ Use [File.stream!/3](https://hexdocs.pm/elixir/File.html#stream!/3) to read each
 
 ```
 
-Use [File.stream!/3](https://hexdocs.pm/elixir/File.html#stream!/3) and [Stream.filter/2](https://hexdocs.pm/elixir/Stream.html#filter/2) to filter in lines from `multi-line.txt` that contain numbers less than or equal to `3`.
+Use [File.stream!/3](https://hexdocs.pm/elixir/File.html#stream!/3) and [Stream.filter/2](https://hexdocs.pm/elixir/Stream.html#filter/2) to filter in lines from `multi-line.txt` that contain numbers less than `3`.
 
 Use [File.write/3](https://hexdocs.pm/elixir/File.html#write/3) to re-write `multi-line.txt` with only the filtered lines.
 
@@ -282,7 +282,7 @@ We will accept applications for the June-August 2023 cohort soon.
 </div>
 <div style="display: flex;">
 <i class="ri-arrow-left-fill"></i>
-<a style="display: flex; color: #61758a; margin-left: 1rem;" href="../reading/file.livemd">File</a>
+<a style="display: flex; color: #61758a; margin-left: 1rem;" href="../exercises/stream_drills.livemd">Stream Drills</a>
 </div>
 <div style="display: flex;">
 <a style="display: flex; color: #61758a; margin-right: 1rem;" href="../exercises/save_game.livemd">Save Game</a>

@@ -13,9 +13,11 @@ Email the instructor Brooklin at brooklin.myers@dockyard.com or direct message [
 * Install [Postgres](https://www.postgresql.org/download/) (optional to get started)
 * Install [Phoenix](https://hexdocs.pm/phoenix/installation.html) (optional to get started)
 * Setup [WSL with Visual Studio Code](https://code.visualstudio.com/docs/remote/wsl) (Windows Users Only)
-* Optionally Install [asdf](https://asdf-vm.com/guide/getting-started.html) to manage elixir and erlang versions.
+* Optionally Install [asdf](https://asdf-vm.com/guide/getting-started.html) to manage Elixir and Erlang versions.
 
 While we strongly recommend the [Visual Studio Code](https://code.visualstudio.com/) editor for its LiveShare capability, you may use any code editor you prefer.
+
+This course is intended to be approachable to students with no computer science background.
 
 ## Getting Started
 
@@ -34,71 +36,73 @@ Our program is designed to produce highly qualified Elixir developers. Upon comp
 See [start.livemd](https://github.com/DockYard-Academy/curriculum/blob/main/start.livemd) for a full breakdown of our lessons and exercises.
 
 <!-- course-outline-start -->
-## Core Syntax
+## Elixir Fundamentals
+* Prerequisites
 * Course Tools
 * Basics
 * Data Structures And Intro To Pattern Matching
 * Control Flow And Abstraction
 * Modules And Structs
 * Enumeration
-* Comprehensions And Non-Enumerable Data Types
 * Built-in Modules
+* Comprehensions And Non-Enumerable Data Types
 * Reduce
 * Dates And Time
 * String Manipulation
+* Recursion
 ## Mix Projects
 * Elixir Build Tooling
 * Testing With ExUnit
-* ExUnit With Mix Projects
 * Documentation And Static Analysis
 * Executables
-## OTP And Advanced Syntax
+## Advanced Syntax
 * Advanced Pattern Matching
 * Guarding
 * Protocols
-* Recursion
 * Persistence Using The File System
+## OTP
 * Processes
 * GenServers
-* Asynchronous Messages
+* Testing GenServers
 * Supervisor Basics And Fault Tolerance
-* Mix Projects And Processes
 * Concurrency With Tasks
-## Capstone Project Preparation
-* Capstone Project
-## Web Servers And Phoenix
+## Phoenix
 * HTML And CSS
-* APIs And Parsing JSON
+* APIs
+* Relational Databases
 * Phoenix
-* Tailwind
-* Ecto Changesets
 * Group Project Blog
 * Phoenix And Ecto
 * Testing Phoenix
-* Schemas And Migrations
+* Phoenix Forms And Components
 * Phoenix And Ecto One-to-Many Associations
-* Seeding
-* Phoenix Forms
 * Phoenix Authentication
 * Phoenix And Ecto Many-to-Many Relationships
 * Phoenix And Ecto One-to-One Relationships
+* Tailwind
 * Deployment
+* Custom Feature
 * Group Project Presentation
+## Capstone Project Preparation
+* Capstone Project
 ## LiveView
 * LiveView
 * LiveView And Ecto
+* LiveView Authentication
 * LiveView Image Uploads
 * PubSub
 * LiveView JS Interoperability And Pagination
-* Emailing, Swoosh, And Oban
+* Scheduling And Emailing With Swoosh And Oban
 ## Bonus Topics
 * Performance Optimization
 * Benchmarking And Performance
-* Streams
+* Ecto Changesets
 * State Management With Agents And ETS
 * Metaprogramming
-* Double-Ended Queues
+* Queues
 * Worker Pools
 * Rubix Cube Project
 
-<!-- course-outline-start -->
+<!-- course-outline-end -->
+
+
